@@ -14,7 +14,7 @@ const forecast = (latitude=0, longitude=0, callback)=>
         }
         else{
             let percPrecip = body.currently.precipProbability * 100
-            callback(undefined,body.daily.data[0].summary+" It is currently "+body.currently.temperature+" degrees out. There is "+percPrecip+"% of change of rain." )
+            callback(undefined,body.daily.data[0].summary+" A temperatura é de "+body.currently.temperature+" graus. Existe "+percPrecip+"% de chance de chover." )
         }
         
     })
