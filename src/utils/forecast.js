@@ -13,7 +13,8 @@ const forecast = (latitude=0, longitude=0, callback)=>
             callback(body.error,undefined)
         }
         else{
-            callback(undefined,body.daily.data[0].summary+" It is currently "+body.currently.temperature+" degrees out. There is "+body.currently.precipProbability+"% of change of rain." )
+            let percPrecip = body.currently.precipProbability * 100
+            callback(undefined,body.daily.data[0].summary+" It is currently "+body.currently.temperature+" degrees out. There is "+percPrecip+"% of change of rain." )
         }
         
     })
