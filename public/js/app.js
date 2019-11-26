@@ -1,5 +1,3 @@
-console.log('cliente teste para o javascript')
-
 const weatherForm = document.querySelector('form')
 const search = document.querySelector('input')
 const pMessage1 = document.querySelector('#pMessage1')
