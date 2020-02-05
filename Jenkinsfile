@@ -61,7 +61,7 @@ pipeline {
             agent any
             steps {
                 sh "docker push mycontainerregelcio01.azurecr.io/dockernode:v${currentBuild.number}"
-                sh 'docker images -f dangling=true -q | xargs -r docker images rmi'
+                //sh 'docker images -f dangling=true -q | xargs -r docker images rmi'
                 sh 'docker images'
 
             }
