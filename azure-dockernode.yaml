@@ -1,0 +1,39 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: dockernode
+spec:
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5 
+  template:
+    metadata:
+      labels:
+        app: dockernode
+    spec:
+      nodeSelector:
+        "beta.kubernetes.io/os": linux
+      containers:
+      - name: dockernode
+        image: mycontainerregelcio01.azurecr.io/dockernode:changetextversion
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            cpu: 250m
+          limits:
+            cpu: 500m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dockernode
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 3000
+  selector:
+    app: dockernode
